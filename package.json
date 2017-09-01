@@ -1,0 +1,28 @@
+{
+  "name": "Edelia-Portal-Cz-Adapter",
+  "version": "0.0.0-semantically-released.0",
+  "description": "Commitizen adapter following the edelia format.",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "test": "echo 'Tests need to be setup!'",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "homepage": "http://git.niji.fr/jviallatte/Edelia-Portal-Cz-Adapter",
+  "repository": {
+    "type": "git",
+    "url": "http://git.niji.fr/jviallatte/Edelia-Portal-Cz-Adapter.git"
+  },
+  "author": "Jeremy Viallatte <jeremy.viallatte@niji.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash.map": "^4.5.1",
+    "longest": "^1.0.1",
+    "pad-right": "^0.2.2",
+    "right-pad": "^1.0.1",
+    "word-wrap": "^1.0.3"
+  },
+  "devDependencies": {
+    "semantic-release": "^6.3.2"
+  }
+}
