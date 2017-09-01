@@ -57,7 +57,7 @@ module.exports = function (options) {
         }, {
           type: 'input',
           name: 'scope',
-          message: 'Refers the BC/ANO number:\n'
+          message: 'Refers the BC/ANO number or provide a specific pre-title:\n'
         }, {
           type: 'input',
           name: 'subject',
@@ -97,7 +97,6 @@ module.exports = function (options) {
         }
 
         scope = scope ? '[' + pretitle + answers.scope.trim() + ']' : '';
-
 
         // Hard limit this line
         var head = (answers.type + scope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);

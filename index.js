@@ -1,8 +1,8 @@
 "format cjs";
 
 var engine = require('./engine');
-var types = require('./types.json');
+var edeliaTypes = require('./types.json');
 
 module.exports = engine({
-  types: types
+  types: edeliaTypes.types
 });
