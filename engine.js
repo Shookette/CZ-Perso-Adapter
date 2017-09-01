@@ -93,11 +93,11 @@ module.exports = function (options) {
         if (answers.type === 'BC' || answers.type === 'ANO') {
           finalScope = '[' + answers.type + '-' + scope + ']';
         } else {
-          finalScope = '[' + answers.type + scope + ']';
+          finalScope = '[' + answers.type + ' ' + scope + ']';
         }
 
         // Hard limit this line
-        var head = (finalScope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);
+        var head = (finalScope + ' ' + answers.subject.trim()).slice(0, maxLineWidth);
 
         // Wrap these lines at 100 characters
         var body = wrap(answers.body, wrapOptions);
