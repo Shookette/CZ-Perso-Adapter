@@ -1,5 +1,5 @@
 {
-  "name": "Edelia-Portal-Cz-Adapter",
+  "name": "edelia-portal-cz-adapter",
   "version": "0.0.1",
   "description": "Commitizen adapter following the edelia format.",
   "main": "index.js",
