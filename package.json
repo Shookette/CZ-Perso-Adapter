@@ -1,6 +1,6 @@
 {
   "name": "edelia-portal-cz-adapter",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Commitizen adapter following the edelia format.",
   "main": "index.js",
   "scripts": {

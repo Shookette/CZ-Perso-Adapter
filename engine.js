@@ -57,11 +57,11 @@ module.exports = function (options) {
         }, {
           type: 'input',
           name: 'scope',
-          message: 'Refers the BC/ANO number or provide a specific pre-title:\n'
+          message: 'Refers the BC/ANO number (only for BC/ANO types):\n'
         }, {
           type: 'input',
           name: 'subject',
-          message: 'Write the BC/ANO title:\n'
+          message: 'Write the title of the commit:\n'
         }, {
           type: 'input',
           name: 'body',
@@ -87,19 +87,17 @@ module.exports = function (options) {
         };
 
         // parentheses are only needed when a scope is present
-        var scope = answers.scope.trim();
-        var pretitle = '';
-        console.log('choices::', choices);
-        if (choices === "BC") {
-          pretitle = 'BC-';
-        } else if (choices === "ANO") {
-          pretitle = 'ANO-';
+        var scope = answers.scope.trim() || '';
+
+        var finalScope = '';
+        if (answers.type === 'BC' || answers.type === 'ANO') {
+          finalScope = '[' + answers.type + '-' + scope + ']';
+        } else {
+          finalScope = '[' + answers.type + scope + ']';
         }
 
-        scope = scope ? '[' + pretitle + answers.scope.trim() + ']' : '';
-
         // Hard limit this line
-        var head = (answers.type + scope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);
+        var head = (finalScope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);
 
         // Wrap these lines at 100 characters
         var body = wrap(answers.body, wrapOptions);
