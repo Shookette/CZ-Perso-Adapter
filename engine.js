@@ -72,12 +72,12 @@ module.exports = function (options) {
           message: 'List any breaking changes:\n'
         }, {
           type: 'input',
-          name: 'issues',
-          message: 'List any issues closed by this change:\n'
+          name: 'times',
+          message: 'Time spent on this commit:\n'
         }
       ]).then(function(answers) {
 
-        var maxLineWidth = 100;
+        var maxLineWidth = 72;
 
         var wrapOptions = {
           trim: true,
@@ -93,7 +93,11 @@ module.exports = function (options) {
         if (answers.type === 'BC' || answers.type === 'ANO') {
           finalScope = '[' + answers.type + '-' + scope + ']';
         } else {
-          finalScope = '[' + answers.type + ' ' + scope + ']';
+          if (scope !== undefined && scope !== null && scope !== '') {
+            finalScope = '[' + answers.type + ' ' + scope + ']';
+          } else {
+            finalScope = '[' + answers.type + ']';
+          }
         }
 
         // Hard limit this line
@@ -107,7 +111,7 @@ module.exports = function (options) {
         breaking = breaking ? 'BREAKING CHANGE: ' + breaking.replace(/^BREAKING CHANGE: /, '') : '';
         breaking = wrap(breaking, wrapOptions);
 
-        var issues = wrap(answers.issues, wrapOptions);
+        var issues = wrap(answers.times, wrapOptions);
 
         var footer = filter([ breaking, issues ]).join('\n\n');
 

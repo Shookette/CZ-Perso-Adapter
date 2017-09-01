@@ -1,6 +1,6 @@
 {
   "name": "edelia-portal-cz-adapter",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Commitizen adapter following the edelia format.",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,12 @@
     "word-wrap": "^1.0.3"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^2.0.0",
     "semantic-release": "^6.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
