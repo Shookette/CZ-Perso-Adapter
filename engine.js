@@ -101,7 +101,7 @@ module.exports = function (options) {
         }
 
         // Hard limit this line
-        var head = (finalScope + ' ' + answers.subject.trim()).slice(0, maxLineWidth);
+        var head = (finalScope + answers.subject.trim()).slice(0, maxLineWidth);
 
         // Wrap these lines at 100 characters
         var body = wrap(answers.body, wrapOptions);
@@ -111,9 +111,11 @@ module.exports = function (options) {
         breaking = breaking ? 'BREAKING CHANGE: ' + breaking.replace(/^BREAKING CHANGE: /, '') : '';
         breaking = wrap(breaking, wrapOptions);
 
-        var issues = wrap(answers.times, wrapOptions);
+        var time = wrap(answers.times, wrapOptions);
+        // Add time spent prefix text before the brut result
+        time = time ? 'Time spent : ' + time : '';
 
-        var footer = filter([ breaking, issues ]).join('\n\n');
+        var footer = filter([ breaking, time ]).join('\n\n');
 
         commit(head + '\n\n' + body + '\n\n' + footer);
       });
